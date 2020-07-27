@@ -3,8 +3,6 @@ from typing import Callable, List, Tuple
 from gensim.models.keyedvectors import Word2VecKeyedVectors
 import numpy as np
 
-np.random.seed(0)
-
 
 def _word_embed(
     token: str,
@@ -85,8 +83,11 @@ def infer_vector(
     kv,
     method: str = 'avg',
     uniform_range: Tuple[float, float] = (-0.01, 0.01),
-    num_windows: int = 3
+    num_windows: int = 3,
+    seed: int = 0
 ) -> np.ndarray:
+    np.random.seed(seed)
+
     tokens_embed: np.ndarray = _word_embeds(
         tokens=tokens,
         kv=kv,
