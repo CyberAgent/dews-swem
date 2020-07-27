@@ -3,6 +3,8 @@ from typing import Callable, List, Tuple
 from gensim.models.keyedvectors import Word2VecKeyedVectors
 import numpy as np
 
+np.random.seed(0)
+
 
 def _word_embed(
     token: str,
